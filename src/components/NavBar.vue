@@ -1,8 +1,12 @@
 <template>
-  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <nav
+    class="navbar is-dark mb-4 is-family-code"
+    role="navigation"
+    aria-label="main navigation"
+  >
     <div class="container is-max-desktop">
       <div class="navbar-brand">
-        <a class="navbar-item is-size-5 is-family-code" href="#">NoteBalls</a>
+        <a class="navbar-item is-size-5" href="#">NoteBalls</a>
 
         <a
           role="button"
