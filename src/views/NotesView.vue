@@ -1,9 +1,7 @@
 <template>
-  <section class="notes">
-    <h1>Notes</h1>
-  </section>
+  <section class="notes"></section>
 </template>
 
-<script></script>
+<script setup></script>
 
 <style scoped></style>
