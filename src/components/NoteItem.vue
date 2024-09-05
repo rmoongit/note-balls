@@ -9,32 +9,28 @@
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item has-text-black">Edit</a>
-      <a href="#" class="card-footer-item has-text-black" @click="handleDelete">Delete</a>
+      <button class="card-footer-item has-text-black">Edit</button>
+      <button class="card-footer-item has-text-black" @click="storeNotes.deleteNote(note.id)">Delete</button>
     </footer>
   </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits, computed } from 'vue';
+import { defineProps, computed } from 'vue';
+import { useNotesStore } from '@/stores/storeNotes';
+
+const storeNotes = useNotesStore();
 
 const props = defineProps({
   note: {
     type: Object,
     required: true,
-    default: () => ({}),
   },
 });
-
-const emit = defineEmits(['deleteNoteClicked']);
 
 const charactersLength = computed(() => {
   const charLength = props.note.text.length;
   const description = charLength > 1 ? 'characters' : 'character';
   return `${charLength} ${description}`;
 });
-
-const handleDelete = () => {
-  emit('deleteNoteClicked', props.note.id);
-};
 </script>

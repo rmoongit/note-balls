@@ -37,8 +37,8 @@ const emit = defineEmits(['textValue', 'addNewNote']);
 const handleAddNewNote = () => {
   emit('textValue', textValue.value);
   emit('addNewNote');
-  textValue.value = '';
 
+  textValue.value = '';
   newNoteRef.value.focus();
 };
 </script>

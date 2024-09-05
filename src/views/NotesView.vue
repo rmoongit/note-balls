@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <NoteField @text-value="updateText" @add-new-note="addNewNote" />
-    <NoteItem v-for="note in notes" :key="note.id" :note="note" @delete-note-clicked="deleteNote" />
+    <NoteItem v-for="note in storeNotes.notes" :key="note.id" :note="note" />
   </div>
 </template>
 
@@ -10,33 +10,20 @@ import NoteField from '@/components/NoteField.vue';
 import NoteItem from '@/components/NoteItem.vue';
 
 import { ref } from 'vue';
+import { useNotesStore } from '@/stores/storeNotes';
 
-const textValue = ref('');
-const notes = ref([]);
+const storeNotes = useNotesStore();
+
+const fieldValue = ref('');
 
 // update text value
 const updateText = (newValue) => {
-  textValue.value = newValue;
+  fieldValue.value = newValue;
 };
 
 // add New note
 const addNewNote = () => {
-  const currentDate = new Date().getTime();
-  const id = currentDate.toString();
-
-  const createNote = {
-    id: id,
-    text: textValue.value,
-  };
-
-  notes.value.unshift(createNote);
-};
-
-// delete note by click
-const deleteNote = (id) => {
-  const filteredArray = notes.value.filter((note) => note.id !== id);
-
-  notes.value = filteredArray;
+  storeNotes.addNote(fieldValue.value);
 };
 </script>
 
