@@ -1,9 +1,5 @@
 <template>
-  <nav
-    class="navbar is-dark mb-4 is-family-code"
-    role="navigation"
-    aria-label="main navigation"
-  >
+  <nav class="navbar is-dark mb-4 is-family-code" role="navigation" aria-label="main navigation">
     <div class="container is-max-desktop">
       <div class="navbar-brand">
         <a class="navbar-item is-size-5" href="#">NoteBalls</a>
@@ -24,18 +20,10 @@
         </a>
       </div>
 
-      <div
-        id="navbarBasicExample"
-        class="navbar-menu"
-        :class="{ 'is-active': showMobileMenu }"
-      >
+      <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showMobileMenu }">
         <div class="navbar-end">
-          <RouterLink class="navbar-item" active-class="is-active" to="/"
-            >Notes</RouterLink
-          >
-          <RouterLink class="navbar-item" active-class="is-active" to="/stats"
-            >Stats</RouterLink
-          >
+          <RouterLink class="navbar-item" active-class="is-active" to="/">Notes</RouterLink>
+          <RouterLink class="navbar-item" active-class="is-active" to="/stats">Stats</RouterLink>
         </div>
       </div>
     </div>
@@ -43,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
 const showMobileMenu = ref(false);
 </script>
