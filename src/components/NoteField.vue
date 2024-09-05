@@ -1,5 +1,5 @@
 <template>
-    <div class="card-field p-4 has-background-dark mb-4">
+    <div class="note-field p-4 has-background-dark mb-4">
         <div class="field">
             <label class="label has-text-white is-family-code">Enjoy with your notes</label>
             <div class="control">
@@ -16,6 +16,7 @@
             <div class="control">
                 <button
                     class="button is-link has-background-white has-text-dark is-size-7 is-family-code"
+                    :disabled="!textValue"
                     @click.prevent="addNewNote"
                 >
                     Add a new note
@@ -43,7 +44,7 @@ const addNewNote = () => {
 </script>
 
 <style scoped>
-.card-field {
+.note-field {
     border-radius: 0.75rem;
 }
 

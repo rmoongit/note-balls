@@ -1,13 +1,13 @@
 <template>
     <div class="main">
-        <TextField @text-value="handleTextValue" @add-new-note="handleAddNote" />
-        <CardItem :notes="notes" />
+        <NoteField @text-value="handleTextValue" @add-new-note="handleAddNote" />
+        <NoteItem v-for="note in notes" :key="note.id" :note="note" />
     </div>
 </template>
 
 <script setup>
-import TextField from '@/components/TextField.vue';
-import CardItem from '@/components/CardItem.vue';
+import NoteField from '@/components/NoteField.vue';
+import NoteItem from '@/components/NoteItem.vue';
 
 import { ref } from 'vue';
 
@@ -31,8 +31,6 @@ const handleAddNote = () => {
         id: id,
         text: textValue.value,
     };
-
-    console.log(createNote);
 
     notes.value.unshift(createNote);
 };

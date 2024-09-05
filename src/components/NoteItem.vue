@@ -1,5 +1,5 @@
 <template>
-    <div v-for="note in notes" :key="note.id" class="card">
+    <div class="card">
         <div class="card-content">
             <div class="content">
                 {{ note.text }}
@@ -16,8 +16,9 @@
 import { defineProps } from 'vue';
 
 defineProps({
-    notes: {
+    note: {
         type: Object,
+        required: true,
         default: () => ({}),
     },
 });
