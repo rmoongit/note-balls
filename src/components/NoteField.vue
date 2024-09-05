@@ -17,7 +17,7 @@
         <button
           class="button is-link has-background-white has-text-dark is-size-7 is-family-code"
           :disabled="!textValue"
-          @click.prevent="addNewNote"
+          @click.prevent="handleAddNewNote"
         >
           Add a new note
         </button>
@@ -34,7 +34,7 @@ const newNoteRef = ref(null);
 
 const emit = defineEmits(['textValue', 'addNewNote']);
 
-const addNewNote = () => {
+const handleAddNewNote = () => {
   emit('textValue', textValue.value);
   emit('addNewNote');
   textValue.value = '';

@@ -10,13 +10,13 @@
     </div>
     <footer class="card-footer">
       <a href="#" class="card-footer-item has-text-black">Edit</a>
-      <a href="#" class="card-footer-item has-text-black">Delete</a>
+      <a href="#" class="card-footer-item has-text-black" @click="handleDelete">Delete</a>
     </footer>
   </div>
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue';
+import { defineProps, defineEmits, computed } from 'vue';
 
 const props = defineProps({
   note: {
@@ -26,9 +26,15 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(['deleteNoteClicked']);
+
 const charactersLength = computed(() => {
   const charLength = props.note.text.length;
   const description = charLength > 1 ? 'characters' : 'character';
   return `${charLength} ${description}`;
 });
+
+const handleDelete = () => {
+  emit('deleteNoteClicked', props.note.id);
+};
 </script>

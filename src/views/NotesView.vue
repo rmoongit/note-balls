@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <NoteField @text-value="handleTextValue" @add-new-note="handleAddNote" />
-    <NoteItem v-for="note in notes" :key="note.id" :note="note" />
+    <NoteField @text-value="updateText" @add-new-note="addNewNote" />
+    <NoteItem v-for="note in notes" :key="note.id" :note="note" @delete-note-clicked="deleteNote" />
   </div>
 </template>
 
@@ -14,11 +14,13 @@ import { ref } from 'vue';
 const textValue = ref('');
 const notes = ref([]);
 
-const handleTextValue = (newValue) => {
+// update text value
+const updateText = (newValue) => {
   textValue.value = newValue;
 };
 
-const handleAddNote = () => {
+// add New note
+const addNewNote = () => {
   const currentDate = new Date().getTime();
   const id = currentDate.toString();
 
@@ -28,6 +30,13 @@ const handleAddNote = () => {
   };
 
   notes.value.unshift(createNote);
+};
+
+// delete note by click
+const deleteNote = (id) => {
+  const filteredArray = notes.value.filter((note) => note.id !== id);
+
+  notes.value = filteredArray;
 };
 </script>
 
