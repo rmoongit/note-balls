@@ -5,22 +5,17 @@
       <div class="control">
         <textarea
           ref="newNoteRef"
-          v-model="textValue"
+          :value="props.modelValue"
           class="textarea is-family-code"
           placeholder="Add a new note here..."
+          @input="updateText"
         ></textarea>
       </div>
     </div>
 
     <div class="field is-grouped is-grouped-right">
       <div class="control">
-        <button
-          class="button is-link has-background-white has-text-dark is-size-7 is-family-code"
-          :disabled="!textValue"
-          @click.prevent="handleAddNewNote"
-        >
-          Add a new note
-        </button>
+        <slot name="buttons"></slot>
       </div>
     </div>
   </div>
@@ -29,16 +24,20 @@
 <script setup>
 import { ref, defineEmits } from 'vue';
 
-const textValue = ref('');
 const newNoteRef = ref(null);
 
-const emit = defineEmits(['textValue', 'addNewNote']);
+const emit = defineEmits(['update:modelValue']);
+const props = defineProps({
+  modelValue: {
+    type: String,
+    required: true,
+  },
+});
 
-const handleAddNewNote = () => {
-  emit('textValue', textValue.value);
-  emit('addNewNote');
+// update text
+const updateText = (event) => {
+  emit('update:modelValue', event.target.value);
 
-  textValue.value = '';
   newNoteRef.value.focus();
 };
 </script>

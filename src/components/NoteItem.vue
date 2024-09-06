@@ -9,7 +9,7 @@
       </div>
     </div>
     <footer class="card-footer">
-      <button class="card-footer-item has-text-black">Edit</button>
+      <RouterLink class="card-footer-item has-text-black" :to="`/edit-note/${note.id}`">Edit</RouterLink>
       <button class="card-footer-item has-text-black" @click="storeNotes.deleteNote(note.id)">Delete</button>
     </footer>
   </div>
