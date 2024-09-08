@@ -1,13 +1,13 @@
 <template>
-  <div class="note-field p-4 has-background-dark mb-4">
+  <div class="note-field p-4 mb-4" :class="`has-background-${props.bgColor}`">
     <div class="field">
-      <label class="label has-text-white is-family-code">Enjoy with your notes</label>
+      <label class="label has-text-white is-family-code">{{ props.label }}</label>
       <div class="control">
         <textarea
           ref="textreaRef"
           :value="props.modelValue"
           class="textarea is-family-code"
-          placeholder="Add a new note here..."
+          :placeholder="props.placeholder"
           @input="updateText"
         ></textarea>
       </div>
@@ -31,6 +31,21 @@ const props = defineProps({
   modelValue: {
     type: String,
     required: true,
+  },
+
+  bgColor: {
+    type: String,
+    default: 'dark',
+  },
+
+  placeholder: {
+    type: String,
+    default: 'Add a new note...',
+  },
+
+  label: {
+    type: String,
+    default: 'Enjoy with your notes',
   },
 });
 

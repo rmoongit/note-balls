@@ -3,7 +3,7 @@
     <NoteEditField ref="noteEditRef" v-model="modelValue" :value="modelValue">
       <template #buttons>
         <button
-          class="button has-background-white has-text-dark is-size-7 is-family-code"
+          class="button has-background-white has-text-dark is-size-6 is-family-code"
           :disabled="!modelValue"
           @click.prevent="addNewNote"
         >
