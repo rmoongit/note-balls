@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <NoteEditField v-model="modelValue" :value="modelValue">
+    <NoteEditField ref="noteEditRef" v-model="modelValue" :value="modelValue">
       <template #buttons>
         <button
           class="button has-background-white has-text-dark is-size-7 is-family-code"
@@ -26,11 +26,14 @@ import { useNotesStore } from '@/stores/storeNotes';
 const storeNotes = useNotesStore();
 
 const modelValue = ref('');
+const noteEditRef = ref(null);
 
 // add New note
 const addNewNote = () => {
   storeNotes.addNote(modelValue.value);
   modelValue.value = '';
+
+  noteEditRef.value.focusTextArea();
 };
 </script>
 

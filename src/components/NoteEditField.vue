@@ -4,7 +4,7 @@
       <label class="label has-text-white is-family-code">Enjoy with your notes</label>
       <div class="control">
         <textarea
-          ref="newNoteRef"
+          ref="textreaRef"
           :value="props.modelValue"
           class="textarea is-family-code"
           placeholder="Add a new note here..."
@@ -22,9 +22,9 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue';
+import { ref, defineEmits, defineExpose } from 'vue';
 
-const newNoteRef = ref(null);
+const textreaRef = ref(null);
 
 const emit = defineEmits(['update:modelValue']);
 const props = defineProps({
@@ -37,9 +37,15 @@ const props = defineProps({
 // update text
 const updateText = (event) => {
   emit('update:modelValue', event.target.value);
-
-  newNoteRef.value.focus();
 };
+
+const focusTextArea = () => {
+  textreaRef.value.focus();
+};
+
+defineExpose({
+  focusTextArea,
+});
 </script>
 
 <style scoped>
