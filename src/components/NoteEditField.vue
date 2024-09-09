@@ -31,6 +31,7 @@ const props = defineProps({
   modelValue: {
     type: String,
     required: true,
+    default: '',
   },
 
   bgColor: {
@@ -54,6 +55,7 @@ const updateText = (event) => {
   emit('update:modelValue', event.target.value);
 };
 
+// focus textarea
 const focusTextArea = () => {
   textreaRef.value.focus();
 };

@@ -22,7 +22,7 @@ import NoteItem from '@/components/NoteItem.vue';
 
 import { ref } from 'vue';
 import { useNotesStore } from '@/stores/storeNotes';
-
+// Store
 const storeNotes = useNotesStore();
 
 const modelValue = ref('');

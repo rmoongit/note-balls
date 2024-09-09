@@ -28,5 +28,22 @@ export const useNotesStore = defineStore({
 
       this.notes = filteredArray;
     },
+    // update content text
+    updateContentNote(id, content) {
+      const findIndex = this.notes.findIndex((note) => note.id === id);
+
+      this.notes[findIndex].text = content;
+    },
+  },
+
+  getters: {
+    // get text from added note
+    getTextContent: (state) => {
+      return (id) => {
+        const filtered = state.notes.filter((note) => note.id === id);
+
+        return { ...filtered[0] }.text;
+      };
+    },
   },
 });
