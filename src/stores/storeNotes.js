@@ -45,5 +45,16 @@ export const useNotesStore = defineStore({
         return { ...filtered[0] }.text;
       };
     },
+
+    getTotalNotes: (state) => {
+      return state.notes.length;
+    },
+    // get all characters from each note
+    getTotalCharacters: (state) => {
+      return state.notes.reduce((total, note) => {
+        total += note.text.length;
+        return total;
+      }, 0);
+    },
   },
 });
