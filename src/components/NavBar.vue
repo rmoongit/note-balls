@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-dark mb-4 is-family-code" role="navigation" aria-label="main navigation">
+  <nav ref="navBarRef" class="navbar is-dark mb-4 is-family-code" role="navigation" aria-label="main navigation">
     <div class="container is-max-desktop">
       <div class="navbar-brand">
         <a class="navbar-item is-size-5" href="#">NoteBalls</a>
@@ -36,8 +36,15 @@
 
 <script setup>
 import { ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 
+const navBarRef = ref(null);
 const showMobileMenu = ref(false);
+
+// clicked outside navbar fn
+onClickOutside(navBarRef, () => {
+  showMobileMenu.value = false;
+});
 </script>
 
 <style scoped>
