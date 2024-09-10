@@ -5,6 +5,7 @@
       <div class="control">
         <textarea
           ref="textreaRef"
+          v-auto-focus
           :value="props.modelValue"
           class="textarea is-family-code"
           :placeholder="props.placeholder"
@@ -23,6 +24,7 @@
 
 <script setup>
 import { ref, defineEmits, defineExpose } from 'vue';
+import { vAutoFocus } from '@/directives/vAutoFocus';
 
 const textreaRef = ref(null);
 
