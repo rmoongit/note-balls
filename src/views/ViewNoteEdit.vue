@@ -26,6 +26,7 @@ import NoteEditField from '@/components/NoteEditField.vue';
 import { ref } from 'vue';
 import { useNotesStore } from '@/stores/storeNotes';
 import { useRoute, useRouter } from 'vue-router';
+import { useWatchCharacters } from '@/use/useWatchCharacters';
 
 // Store
 const storeNotes = useNotesStore();
@@ -48,4 +49,7 @@ const updateContent = () => {
   storeNotes.updateContentNote(route.params.id, editContentValue.value);
   router.push('/');
 };
+
+// use fn from "use folder"
+useWatchCharacters(editContentValue);
 </script>

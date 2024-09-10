@@ -22,6 +22,7 @@ import NoteItem from '@/components/NoteItem.vue';
 
 import { ref } from 'vue';
 import { useNotesStore } from '@/stores/storeNotes';
+import { useWatchCharacters } from '@/use/useWatchCharacters';
 
 // Store
 const storeNotes = useNotesStore();
@@ -36,6 +37,9 @@ const addNewNote = () => {
 
   noteEditRef.value.focusTextArea();
 };
+
+// use fn from "use folder"
+useWatchCharacters(modelValue);
 </script>
 
 <style scoped></style>
