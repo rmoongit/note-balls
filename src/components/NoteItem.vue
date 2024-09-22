@@ -12,16 +12,13 @@
       <RouterLink class="card-footer-item has-text-black" :to="`/edit-note/${note.id}`">Edit</RouterLink>
       <button class="card-footer-item has-text-black" @click="modal.deleteNote = true">Delete</button>
     </footer>
-    <NoteModal v-if="modal.deleteNote" v-model="modal.deleteNote" />
+    <NoteModal v-if="modal.deleteNote" v-model="modal.deleteNote" :note-id="note.id" />
   </div>
 </template>
 
 <script setup>
 import { defineProps, computed, reactive } from 'vue';
-import { useNotesStore } from '@/stores/storeNotes';
 import NoteModal from './NoteModal.vue';
-
-const storeNotes = useNotesStore();
 
 const props = defineProps({
   note: {
