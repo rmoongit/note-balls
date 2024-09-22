@@ -10,14 +10,16 @@
     </div>
     <footer class="card-footer">
       <RouterLink class="card-footer-item has-text-black" :to="`/edit-note/${note.id}`">Edit</RouterLink>
-      <button class="card-footer-item has-text-black" @click="storeNotes.deleteNote(note.id)">Delete</button>
+      <button class="card-footer-item has-text-black" @click="modal.deleteNote = true">Delete</button>
     </footer>
+    <NoteModal v-if="modal.deleteNote" v-model="modal.deleteNote" />
   </div>
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue';
+import { defineProps, computed, reactive } from 'vue';
 import { useNotesStore } from '@/stores/storeNotes';
+import NoteModal from './NoteModal.vue';
 
 const storeNotes = useNotesStore();
 
@@ -32,5 +34,10 @@ const charactersLength = computed(() => {
   const charLength = props.note.text.length;
   const description = charLength > 1 ? 'characters' : 'character';
   return `${charLength} ${description}`;
+});
+
+// use reactive variables for Modal
+const modal = reactive({
+  deleteNote: false,
 });
 </script>

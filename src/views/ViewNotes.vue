@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <NoteEditField ref="noteEditRef" v-model="modelValue" :value="modelValue">
+    <NoteEditField ref="noteEditRef" v-model="modelValue">
       <template #buttons>
         <button
           class="button has-background-white has-text-dark is-size-6 is-family-code"
