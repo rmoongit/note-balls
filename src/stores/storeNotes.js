@@ -1,5 +1,8 @@
 import { defineStore } from 'pinia';
 
+import { dataBase } from '@/js/firebase';
+import { collection, getDocs } from 'firebase/firestore';
+
 export const useNotesStore = defineStore({
   id: 'storeNotes',
 
@@ -10,6 +13,18 @@ export const useNotesStore = defineStore({
   },
 
   actions: {
+    // get Notes
+    async getNotes() {
+      const allNotes = await getDocs(collection(dataBase, 'notes'));
+      allNotes.forEach((doc) => {
+        let note = {
+          id: doc.id,
+          text: doc.data().text,
+        };
+
+        this.notes.unshift(note);
+      });
+    },
     // add New note
     addNote(newValue) {
       const currentDate = new Date().getTime();
