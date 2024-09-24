@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 import { dataBase } from '@/js/firebase';
-import { collection, onSnapshot, doc, setDoc } from 'firebase/firestore';
+import { collection, onSnapshot, doc, setDoc, deleteDoc } from 'firebase/firestore';
 
 const collectionRef = collection(dataBase, 'notes');
 
@@ -39,10 +39,8 @@ export const useNotesStore = defineStore({
       });
     },
     // delete note by click
-    deleteNote(id) {
-      const filteredArray = this.notes.filter((note) => note.id !== id);
-
-      this.notes = filteredArray;
+    async deleteNote(id) {
+      await deleteDoc(doc(collectionRef, id));
     },
     // update content text
     updateContentNote(id, content) {
