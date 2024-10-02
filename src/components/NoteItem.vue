@@ -3,8 +3,9 @@
     <div class="card-content">
       <div class="content">
         <p class="mb-4">{{ note.text }}</p>
-        <div class="has-text-right">
-          <small class="has-text-grey-light">{{ charactersLength }}</small>
+        <div class="columns is-mobile">
+          <small class="column has-text-grey-light">{{ dateFormatted }}</small>
+          <small class="column has-text-grey-light has-text-right">{{ charactersLength }}</small>
         </div>
       </div>
     </div>
@@ -18,6 +19,7 @@
 
 <script setup>
 import { defineProps, computed, reactive } from 'vue';
+import { useDateFormat } from '@vueuse/core';
 import NoteModal from './NoteModal.vue';
 
 const props = defineProps({
@@ -31,6 +33,12 @@ const charactersLength = computed(() => {
   const charLength = props.note.text.length;
   const description = charLength > 1 ? 'characters' : 'character';
   return `${charLength} ${description}`;
+});
+
+const dateFormatted = computed(() => {
+  let date = new Date(parseInt(props.note.date));
+
+  return useDateFormat(date, 'DD.MM.YYYY / HH:mm');
 });
 
 // use reactive variables for Modal

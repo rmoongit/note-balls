@@ -23,6 +23,7 @@ export const useNotesStore = defineStore({
         querySnapshot.forEach((doc) => {
           let note = {
             id: doc.id,
+            date: doc.data().date,
             text: doc.data().text,
           };
           notes.unshift(note);
