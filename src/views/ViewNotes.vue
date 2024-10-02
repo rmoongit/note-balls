@@ -16,6 +16,10 @@
 
     <template v-else>
       <NoteItem v-for="note in storeNotes.notes" :key="note.id" :note="note" />
+
+      <div v-if="!storeNotes.notes.length">
+        <p class="is-size-3 has-text-centered has-text-grey-light py-6">The field is empty !</p>
+      </div>
     </template>
   </div>
 </template>
