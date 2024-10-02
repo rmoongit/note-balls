@@ -12,7 +12,11 @@
       </template>
     </NoteEditField>
 
-    <NoteItem v-for="note in storeNotes.notes" :key="note.id" :note="note" />
+    <progress v-if="!storeNotes.notesLoaded" class="progress is-small is-danger" max="100" />
+
+    <template v-else>
+      <NoteItem v-for="note in storeNotes.notes" :key="note.id" :note="note" />
+    </template>
   </div>
 </template>
 
