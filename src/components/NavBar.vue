@@ -21,6 +21,10 @@
       </div>
 
       <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showMobileMenu }">
+        <div class="navbar-start">
+          <button class="button is-danger is-outlined is-small m-3">Log out</button>
+        </div>
+
         <div class="navbar-end">
           <RouterLink class="navbar-item" active-class="is-active" to="/" @click="showMobileMenu = false"
             >Notes</RouterLink
