@@ -26,7 +26,7 @@
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
-              <input v-model="credentials.password" class="input" type="password" placeholder="****" />
+              <input v-model="credentials.password" class="input" type="password" placeholder="******" />
             </div>
           </div>
 
@@ -43,9 +43,12 @@
 
 <script setup>
 import { ref, computed, reactive } from 'vue';
+import { useAuthStore } from '@/stores/storeAuth';
 
 // register / login
 const register = ref(false);
+// authStore
+const authStore = useAuthStore();
 
 // form title
 const formTitle = computed(() => {
@@ -57,7 +60,7 @@ const onSubmit = () => {
   if (!credentials.email || !credentials.password) alert('please type something..');
   else {
     if (register.value) {
-      console.log('register please');
+      authStore.registerUser(credentials);
     } else {
       console.log('login please');
     }
