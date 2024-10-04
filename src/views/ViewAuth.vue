@@ -62,7 +62,7 @@ const onSubmit = () => {
     if (register.value) {
       authStore.registerUser(credentials);
     } else {
-      console.log('login please');
+      authStore.loginUser(credentials);
     }
   }
 };
