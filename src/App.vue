@@ -11,13 +11,13 @@
 import Wrapper from '@/components/Wrapper.vue';
 import NavBar from '@/components/NavBar.vue';
 import { onMounted } from 'vue';
-import { useNotesStore } from './stores/storeNotes';
+import { useAuthStore } from './stores/storeAuth';
 
-const storeNotes = useNotesStore();
+const authStore = useAuthStore();
 
 // onMounted main app function
 onMounted(() => {
-  storeNotes.getNotes();
+  authStore.initUser();
 });
 </script>
 

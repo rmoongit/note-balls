@@ -28,7 +28,7 @@
 import NoteEditField from '@/components/NoteEditField.vue';
 import NoteItem from '@/components/NoteItem.vue';
 
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useNotesStore } from '@/stores/storeNotes';
 import { useWatchCharacters } from '@/use/useWatchCharacters';
 
@@ -45,6 +45,11 @@ const addNewNote = () => {
 
   noteEditRef.value.focusTextArea();
 };
+
+// mount
+onMounted(() => {
+  storeNotes.getNotes();
+});
 
 // use fn from "use folder"
 useWatchCharacters(modelValue);
