@@ -22,7 +22,7 @@
 
       <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showMobileMenu }">
         <div class="navbar-start">
-          <button class="button is-danger is-outlined is-small m-3">Log out</button>
+          <button class="button is-danger is-outlined is-small m-3" @click="authStore.logOutUser">Log out</button>
         </div>
 
         <div class="navbar-end">
@@ -41,6 +41,10 @@
 <script setup>
 import { ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { useAuthStore } from '@/stores/storeAuth';
+
+// store
+const authStore = useAuthStore();
 
 const navBarRef = ref(null);
 const showMobileMenu = ref(false);
