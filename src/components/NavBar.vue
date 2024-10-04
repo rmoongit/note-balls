@@ -22,7 +22,9 @@
 
       <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showMobileMenu }">
         <div class="navbar-start">
-          <button class="button is-danger is-outlined is-small m-3" @click="authStore.logOutUser">Log out</button>
+          <button v-if="authStore.user.id" class="button is-danger is-outlined is-small m-3" @click="logout">
+            Log out {{ authStore.user.email }}
+          </button>
         </div>
 
         <div class="navbar-end">
@@ -53,6 +55,12 @@ const showMobileMenu = ref(false);
 onClickOutside(navBarRef, () => {
   showMobileMenu.value = false;
 });
+
+// logout fn
+const logout = () => {
+  showMobileMenu.value = false;
+  authStore.logOutUser();
+};
 </script>
 
 <style scoped>
