@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
+import { useAuthStore } from '@/stores/storeAuth';
 
 import ViewNotes from '@/views/ViewNotes.vue';
 import ViewStats from '@/views/ViewStats.vue';
@@ -29,4 +30,16 @@ export const router = createRouter({
       component: ViewAuth,
     },
   ],
+});
+
+// nav guards
+router.beforeEach(async (to) => {
+  const storeAuth = useAuthStore();
+  if (!storeAuth.user.id && to.name !== 'auth') {
+    return { name: 'auth' };
+  }
+
+  if (storeAuth.user.id && to.name === 'auth') {
+    return { name: 'notes' };
+  }
 });
